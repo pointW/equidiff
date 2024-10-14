@@ -138,3 +138,19 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+equi_diffpo/scripts/equidiff_data_conversion.py
+equi_diffpo/model/equi/vec_conditional_unet1d_1.py
+update_max_score.py
+test4.png
+test3.png
+test2.png
+test1.png
+test.png
+sampled_xyz.png
+pc.pt
+metric3.py
+metric2.py
+metric1.py
+grouped_xyz.png
+all_xyz.png
+1.png

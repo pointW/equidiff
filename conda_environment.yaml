@@ -1,4 +1,4 @@
-name: robodiff
+name: equidiff
 channels:
   - pytorch
   - pytorch3d
@@ -7,10 +7,11 @@ channels:
 dependencies:
   - python=3.9
   - pip=22.2.2
-  - cudatoolkit=11.6
-  - pytorch=1.12.1
-  - torchvision=0.13.1
-  - pytorch3d=0.7.0
+  - pytorch=2.1.0
+  - torchaudio=2.1.0
+  - torchvision=0.16.0
+  - pytorch-cuda=11.8
+  - pytorch3d=0.7.5
   - numpy=1.23.3
   - numba==0.56.4
   - scipy==1.9.1
@@ -29,7 +30,6 @@ dependencies:
   - scikit-image=0.19.3
   - gym=0.21.0
   - pymunk=6.2.1
-  - wandb=0.13.3
   - threadpoolctl=3.1.0
   - shapely=1.8.4
   - cython=0.29.32
@@ -51,15 +51,11 @@ dependencies:
   # trick to force reinstall imagecodecs via pip
   - imagecodecs==2022.8.8
   - pip:
-    - ray[default,tune]==2.2.0
-    # requires mujoco py dependencies libosmesa6-dev libgl1-mesa-glx libglfw3 patchelf
-    - free-mujoco-py==2.1.6
-    - pygame==2.1.2
-    - pybullet-svl==3.1.6.4
-    - robosuite @ https://github.com/cheng-chi/robosuite/archive/277ab9588ad7a4f4b55cf75508b44aa67ec171f0.tar.gz
-    - robomimic==0.2.0
-    - pytorchvideo==0.1.5
-    # pip package required for jpeg-xl
+    - open3d
+    - wandb==0.17.0
+    - pygame
     - imagecodecs==2022.9.26
-    - r3m @ https://github.com/facebookresearch/r3m/archive/b2334e726887fa0206962d7984c69c5fb09cceab.tar.gz
-    - dm-control==1.0.9
+    - escnn @ https://github.com/pointW/escnn/archive/fc4714cb6dc0d2a32f9fcea35771968b89911109.tar.gz
+    - robosuite @ https://github.com/ARISE-Initiative/robosuite/archive/b9d8d3de5e3dfd1724f4a0e6555246c460407daa.tar.gz
+    - robomimic @ https://github.com/pointW/robomimic/archive/8aad5b3caaaac9289b1504438a7f5d3a76d06c07.tar.gz
+    - robosuite-task-zoo  @ https://github.com/pointW/robosuite-task-zoo/archive/0f8a7b2fa5d192e4e8800bebfe8090b28926f3ed.tar.gz

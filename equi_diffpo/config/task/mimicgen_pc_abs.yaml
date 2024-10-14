@@ -1,0 +1,81 @@
+name: mimicgen_pc_abs
+
+shape_meta: &shape_meta
+  # acceptable types: rgb, low_dim
+  obs:
+    robot0_eye_in_hand_image:
+      shape: [3, 84, 84]
+      type: rgb
+    point_cloud:
+      shape: [1024, 6]
+      type: point_cloud
+    robot0_eef_pos:
+      shape: [3]
+      # type default: low_dim
+    robot0_eef_quat:
+      shape: [4]
+    robot0_gripper_qpos:
+      shape: [2]
+  action: 
+    shape: [10]
+
+env_runner_shape_meta: &env_runner_shape_meta
+  # acceptable types: rgb, low_dim
+  obs:
+    robot0_eye_in_hand_image:
+      shape: [3, 84, 84]
+      type: rgb
+    agentview_image:
+      shape: [3, 84, 84]
+      type: rgb
+    point_cloud:
+      shape: [1024, 6]
+      type: point_cloud
+    robot0_eef_pos:
+      shape: [3]
+      # type default: low_dim
+    robot0_eef_quat:
+      shape: [4]
+    robot0_gripper_qpos:
+      shape: [2]
+  action: 
+    shape: [10]
+
+abs_action: &abs_action True
+
+env_runner:
+  _target_: equi_diffpo.env_runner.robomimic_image_runner.RobomimicImageRunner
+  dataset_path: ${dataset_path}
+  shape_meta: *env_runner_shape_meta
+  n_train: 6
+  n_train_vis: 2
+  train_start_idx: 0
+  n_test: 50
+  n_test_vis: 4
+  test_start_seed: 100000
+  max_steps: ${get_max_steps:${task_name}}
+  n_obs_steps: ${n_obs_steps}
+  n_action_steps: ${n_action_steps}
+  render_obs_key: 'agentview_image'
+  fps: 10
+  crf: 22
+  past_action: False
+  abs_action: *abs_action
+  tqdm_interval_sec: 1.0
+  n_envs: 28
+
+dataset:
+  _target_: ${dataset_target}
+  n_demo: ${n_demo}
+  shape_meta: *shape_meta
+  dataset_path: ${dataset_path}
+  horizon: ${horizon}
+  pad_before: ${eval:'${n_obs_steps}-1+${n_latency_steps}'}
+  pad_after: ${eval:'${n_action_steps}-1'}
+  n_obs_steps: ${dataset_obs_steps}
+  abs_action: *abs_action
+  rotation_rep: 'rotation_6d'
+  use_legacy_normalizer: False
+  use_cache: False
+  seed: 42
+  val_ratio: 0.02
