@@ -48,12 +48,9 @@ Conference on Robot Learning 2024 (Oral)
 
 ## Dataset
 ### Download Dataset
-```bash
-# Download all datasets
-python equi_diffpo/scripts/download_datasets.py --tasks stack_d1 stack_three_d1 square_d2 threading_d2 coffee_d2 three_piece_assembly_d2 hammer_cleanup_d1 mug_cleanup_d1 kitchen_d1 nut_assembly_d0 pick_place_d0 coffee_preparation_d1
-# Alternatively, download one (or several) datasets of interest, e.g.,
-python equi_diffpo/scripts/download_datasets.py --tasks stack_d1
-```
+Download dataset from MimicGen's hugging face: https://huggingface.co/datasets/amandlek/mimicgen_datasets/tree/main/core  
+Make sure the dataset is kept under `/path/to/equidiff/data/robomimic/datasets/[dataset]/[dataset].hdf5`
+
 ### Generating Voxel and Point Cloud Observation
 
 ```bash
